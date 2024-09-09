@@ -1,17 +1,9 @@
-def dex_to_bin(m):
-    r=''
-    while m!=0:
-        r+=str(m%2)
-        m//=2
-    return r
-
-for t in range(1, int(input())+1):
+re=[0]
+for t in range(int(input())):
     N,M=map(int, input().split())
-    M=dex_to_bin(M)
-    c=0
-    for m in M:
-        if m=='0':break
-        if c==N:break
-        c+=1
-    if c==N:print(f'#{t} ON')
-    else:print(f'#{t} OFF')
+    M=bin(M)[2:]
+    re.append('1'*N==M[-N:])
+for i, r in enumerate(re):
+    if not i:continue
+    if r:print(f'#{i} ON')
+    else:print(f'#{i} OFF')
